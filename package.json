@@ -1,0 +1,46 @@
+{
+  "name": "tradebook",
+  "version": "1.0.0",
+  "description": "Tradebook Repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --config .mocharc.js",
+    "testw": "mocha --config .mocharc.js --watch",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nowk/tradebook.git"
+  },
+  "author": "Yung Hwa Kwon <yung.kwon@threecro.ws>",
+  "license": "PRIVATE",
+  "bugs": {
+    "url": "https://github.com/nowk/tradebook/issues"
+  },
+  "homepage": "https://github.com/nowk/tradebook#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.12",
+    "@types/mocha": "^10.0.6",
+    "@types/react": "19.1.5",
+    "chai": "^4.4.1",
+    "chai-exclude": "^2.1.0",
+    "mocha": "^10.3.0",
+    "node-mocks-http": "^1.17.2",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.3",
+    "next": "^15.1.8",
+    "pg": "^8.11.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sequelize": "^6.37.1"
+  }
+}
