@@ -1,0 +1,10 @@
+{
+    "ext": "ts,json",
+    "watch": [
+        "src/**/*.ts"
+    ],
+    "ignore": [
+        "src/**/*_test.ts"
+    ],
+    "exec": "ts-node --esm ./index.ts"
+}
