@@ -24,14 +24,12 @@ ActiveRecord::Schema.define(version: 2024_02_20_214057) do
   create_table "trades", force: :cascade do |t|
     t.string "symbol"
     t.string "type"
-    t.string "side"
-    t.string "cusip"
-    t.bigint "price"
-    t.bigint "commission"
-    t.integer "dm", default: 100
-    t.integer "quantity"
+    t.integer "quantity_filled"
+    t.decimal "filled_price", precision: 15, scale: 8
+    t.decimal "commission", precision: 15, scale: 8
     t.datetime "filled_at"
-    t.json "raw"
+    t.string "order_no"
+    t.string "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
