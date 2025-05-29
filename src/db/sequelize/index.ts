@@ -1,5 +1,9 @@
 import { Sequelize, Op } from "sequelize"
 
+// FIXME sequelize returning decimals as strings (for precision)
+// https://github.com/sequelize/sequelize/issues/11855
+(Sequelize as any).DataTypes.postgres.DECIMAL.parse = parseFloat;
+
 // NODE_ENV is the application environment 
 const NODE_ENV = process.env.NODE_ENV
 if (!NODE_ENV) {

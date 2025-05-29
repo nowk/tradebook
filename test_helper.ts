@@ -5,6 +5,7 @@ process.env.NODE_ENV = 'test'
 // import sinon from 'sinon'
 // import { Model } from 'sequelize'
 import * as models from './src/models'
+import * as sinon from 'sinon'
 
 interface Destroyable {
   destroy: (...args: any[]) => any | Promise<any>
@@ -13,7 +14,7 @@ interface Destroyable {
 export const mochaHooks = {
   afterEach: [
     () => {
-      // sinon.restore()
+      sinon.restore()
     },
     async () => {
       const keys: any[] = Object.keys(models)

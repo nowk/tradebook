@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_20_214057) do
+ActiveRecord::Schema.define(version: 2025_05_29_141922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "positions", force: :cascade do |t|
+    t.string "symbol"
+    t.string "type"
+    t.decimal "limit", precision: 15, scale: 8
+    t.decimal "stop", precision: 15, scale: 8
+    t.decimal "target", precision: 15, scale: 8
+    t.decimal "expected_r", precision: 15, scale: 8
+    t.decimal "realized_r", precision: 15, scale: 8
+    t.decimal "pl", precision: 15, scale: 8
+    t.integer "quantity"
+    t.string "gid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "seed_migration_data_migrations", id: :serial, force: :cascade do |t|
     t.string "version"
@@ -32,6 +47,10 @@ ActiveRecord::Schema.define(version: 2024_02_20_214057) do
     t.string "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "value", precision: 15, scale: 8
+    t.bigint "position_id"
+    t.decimal "realized_r", precision: 15, scale: 8
+    t.index ["position_id"], name: "index_trades_on_position_id"
   end
 
 end

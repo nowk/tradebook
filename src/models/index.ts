@@ -1,7 +1,9 @@
+import Position from "./position"
 import Trade from "./trade"
 
 const models = {
   Trade,
+  Position
 }
 
 // bind the associations
@@ -12,6 +14,7 @@ associate(models)
  */
 
 export { Trade }
+export { Position }
 
 /**
  * associate runs the associations method on any applicable model

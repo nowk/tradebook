@@ -1,4 +1,4 @@
-import { Trade } from "../../../models"
+import { Position, Trade } from "../../../models"
 
 // export async function GET(request: Request) {
 //   return new Response(JSON.stringify({ hello: 'world' }), {
@@ -8,7 +8,7 @@ import { Trade } from "../../../models"
 // }
 
 
-type TradeBody = {
+interface TradeBody {
   id?: number
   symbol: string
   type: string
@@ -18,6 +18,11 @@ type TradeBody = {
   filled_at: Date
   order_no: string
   gid: string
+
+  // virtual, to pass to positions
+  limit: number
+  stop: number
+  target: number
 }
 
 export async function POST(request: Request) {
@@ -29,6 +34,14 @@ export async function POST(request: Request) {
   })
   tr.setAttributes(body)
   await tr.save()
+
+  const pra: any = {
+    limit: body.limit,
+    stop: body.stop,
+    target: body.target
+  }
+  await Position.match(tr, pra) // FIXME this should be queued to a bg process, this may become a 
+                                // "long" process
 
   return new Response(JSON.stringify({
     data: tr
